@@ -3,6 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css"
 import axios from 'axios'
 import './index.css'
 import logo from './pp.png'
+import Login from './Login'
 
 class Signup extends Component{
     constructor(){
@@ -49,15 +50,10 @@ class Signup extends Component{
             password:this.state.password
         }
 
-        axios.post('http://localhost:4000/app/signup',registered)
+        axios.post('http://localhost:4000/app/Signup',registered)
         .then(response => console.log(response.data))
-        
-        this.setState({
-            fullName:'',
-            username:'',
-            email:'',
-            password:''
-        })
+        alert("Registration Successfull !d ")
+        window.location='/Login'
     }
     render(){
        
@@ -108,7 +104,7 @@ class Signup extends Component{
                             </div>
                             <input type='submit' className='btn btn-success' value='Submit'/>
                             <div className="label2">
-                                <p>Already have account ? login</p>
+                                <p>Already have account ?</p>
                                 </div>
                         </form>
                         

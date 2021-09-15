@@ -1,62 +1,55 @@
-import React,{useState} from 'react'
-import Search from './components/Search'
-import Results from './components/Results'
-import axios from 'axios'
-import {BrowserRouter as Router , Route} from 'react-router-dom'
+
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import './index.css'
+import Login from './components/Login'
 import Signup from './components/Signup'
 import Navbar from './components/Navbar'
-import Insert from './components/Insert'
+import Home from './components/Home'
+import Contact from './components/Contactus'
+import About from './components/About'
+import Searchb from './components/Searchb'
+import Wishlist from './components/wishlist'
 
-function App(){
-    const [state,setState] =useState({
-        s:"",
-        results:[],
-        selected:{}
-    });
-    const apiurl = "http://www.omdbapi.com/?apikey=73a235a9";
 
-    const search =(e) => {
-        if(e.key === "Enter"){
-            axios(apiurl +"&s=" + state.s).then(({data}) => {
-                let results = data.Search;
-                setState(prevState =>{
-                return {...prevState, results: results }
-                })
+function App() {
 
-            });
-            }
-    }
-
-    const handleInput= (e) => {
-    let s = e.target.value;
-
-    setState(prevState =>{
-        return { ...prevState,s: s}
-    });
-console.log(state,s);
-    }
-    return(
+    return (
         <div className="App">
-        <header>
-      <h1> Movie Review </h1>
-        </header>
-        <main>
-        
-           <Router>
-               <Navbar />
-        <Search handleInput={handleInput} search={search}/>
-        <Results results={state.results} />
-        <Route path="/Insert">
-            <Insert />
-        </Route>
-        <Route path="/signup">
-                <Signup />
-            </Route>
-            </Router>
-        </main>
+            <div className="navivbar">
+          
+                <p> Movie Review </p>
+          
+            </div>
+            <main>
+
+                <Router>
+                    <Navbar />
+                    <Route path="/searchb">
+                        <Searchb />
+                    </Route>
+                    <Route path="/signup">
+                        <Signup />
+                    </Route>
+                    <Route path="/login">
+                        <Login />
+                    </Route>
+                    <Route path="/" exact>
+                        <Home />
+                    </Route>
+                    <Route path="/about">
+                        <About />
+                    </Route>
+                    <Route path="/wishlist">
+                        <Wishlist />
+                    </Route>
+                    <Route path="/contact">
+                        <Contact />
+                    </Route>
+                </Router>
+
+            </main>
         </div>
     );
-    }
+}
 
-    export default App
+export default App

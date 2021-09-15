@@ -1,10 +1,9 @@
-POST http://localhost:4000/app/Insert
+POST http://localhost:4000/app/Signup
 Content-Type: application/json
 
 {
-    "title":"Sabarish A",
-    "description":"starky",
-    "genre":"starky11@gmail.com",
-    "rating":"starkyyy"
+    "fullName":"Sabarish A",
+    "email":"sabarish@gmail.com",
+    "feedback":"starkyyy"
     
 }
